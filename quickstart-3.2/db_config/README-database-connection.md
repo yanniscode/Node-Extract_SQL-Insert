@@ -4,12 +4,11 @@ README - configuration de la Base de données MySQL
 Répertoire des fichiers de configuration (simple et par 'pool') de la Base de données MySQL.
 
 
-	Créer les fichiers `database_connection.js` et `pool_database_connection.js` (à partir des 'samples'), et y saisir vos informations 
-	de connexion et les options choisies:
-		host: "",
-		user: "",
-		password: "",
-		database: "",
+Créer les fichiers `database_connection.js` et `pool_database_connection.js` (à partir des 'samples'), et y saisir vos informations de connexion et les options choisies:
+	host: "",
+	user: "",
+	password: "",
+	database: "",
 
 
 -------------------------------------------------------------------------------------------------------------------------------
