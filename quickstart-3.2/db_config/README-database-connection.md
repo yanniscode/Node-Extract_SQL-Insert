@@ -5,6 +5,7 @@ Répertoire des fichiers de configuration (simple et par 'pool') de la Base de d
 
 
 Créer les fichiers `database_connection.js` et `pool_database_connection.js` (à partir des 'samples'), et y saisir vos informations de connexion et les options choisies:
+
 		host: "",
 		user: "",
 		password: "",
