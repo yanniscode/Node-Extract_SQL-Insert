@@ -1,8 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-#fichiers persos :
+#fichiers divers:
 infos_persos.txt
-client_secret.json
+/client_secret/client_secret.json
+/quickstart-3.2/db_config/database_connection.js
+/quickstart-3.2/db_config/pool_database_connection.js
+
+#répertoires divers:
+/client_secret/client_secret-test
+/bdd_mysql/backup/
+/test_files
 
 # compiled output
 /dist
@@ -10,13 +17,14 @@ client_secret.json
 /tmp
 /out-tsc
 
-# files
-client_secret.json
+#repertoires (contenu de dépendances):
+/tableaux/csv
+/tableaux/xlsx
 
 # dependencies
 /node_modules
-/Tableaux/csv
-/Tableaux/xlsx
+
+
 
 # IDEs and editors
 /.idea
