@@ -1,51 +1,26 @@
-<html>
 
-    <head>
+README 3.1 - Addition à Quickstart-3.2.js
 
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-        <charset utf-8>
+Répertoire des fichiers de l'application `quickstart-3.2.js`, du fichier `cron_launcher-1.4.js`, du répertoire `./db_config` et `./annexes` et des fichiers `mysql_backup.js` et `mysql_restaure.js`.
 
-        <title>
-            README 3.1 - Addition à Quickstart-3.2.js
-        </title>
+-----------------------------------------------------------------------------------------------------------------------------------
 
-        <link href="mystyle_c.css" rel=" stylesheet " type="text/css"/>	
 
-    </head>
+This file is part of Quickstart.js.
 
-	<body>
+Quickstart.js is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-        <h1>README 3.1 - Addition à Quickstart-3.2.js</h1>
+Quickstart.js is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-        <hr>
-        
-        <strong>Répertoire des fichiers de l'application 'quickstart-3.2.js', du fichier 'cron_launcher-1.4.js', du répertoire 'db_config' et 'annexes' et des fichiers 'mysql_backup.js' et 'mysql_restaure.js'.</strong>
-        
-        </br></br>
+You should have received a copy of the GNU General Public License
+along with Quickstart.js.  If not, see <https://www.gnu.org/licenses/>.
 
-        <br /><br />
-        ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        <br /><br />
-        <i>This file is part of <b>Quickstart.js</b>.
-        <br /><br />
 
-        Quickstart.js is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 3 of the License, or
-        (at your option) any later version.
-        <br /><br />
+-----------------------------------------------------------------------------------------------------------------------------------
 
-        Quickstart.js is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
-        <br /><br />
-
-        You should have received a copy of the GNU General Public License
-        along with Quickstart.js.  If not, see <https://www.gnu.org/licenses/>.</i>
-
-        <br /><br />
-        ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br /><br />
-    </body>
-
-</html>
