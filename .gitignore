@@ -13,8 +13,8 @@ infos_persos.txt
 #répertoires divers:
 /client_secret/client_secret-test
 /test_files/*
-/tableaux/xlsx/*.xlsx
-/tableaux/csv/*.csv
+*.xlsx
+*.csv
 
 # compiled output
 /dist
