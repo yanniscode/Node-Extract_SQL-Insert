@@ -7,12 +7,9 @@ infos_persos.txt
 /quickstart-3.2/db_config/pool_database_connection.js
 
 #repertoires essentiels:
-/tableaux/csv/*
-/tableaux/xlsx/*
 
 #répertoires divers:
 /client_secret/client_secret-test
-/bdd_mysql/backup/*
 /test_files/*
 
 # compiled output
