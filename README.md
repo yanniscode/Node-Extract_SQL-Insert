@@ -7,27 +7,46 @@ Extraction d'une pièce jointe de mail, au moyen de l'API Gmail, afin de récup�
         
 
         
-Note du 5 Octobre 2020:
+- 7 Octobre 2020:
 
 Vous pouvez désormais utiliser le programme Quickstart-3.2. Celui-ci permet de récupérer automatiquement des pièces-jointes extraites de mails différents.
 
 Installation:
 
-Vous devez au préalable installer une base de donnée MySQL (avec les informations de connexions - `./quickstart-3.2/db_config/README-database-connection.html`), et créer (ou sélectionner) un projet sur l'API Gmail.
+- Vous devez au préalable installer une base de donnée MySQL (avec les informations de connexions - `./quickstart-3.2/db_config/README-database-connection.html`), et créer (ou sélectionner) un projet sur l'API Gmail.
 
-Vous pouvez cloner le projet sur `https://github.com/yanniscode/Node-Extract_SQL-Insert` et installer les modules (librairies) nécessaires au moyen de NPM:
+- Vous pouvez cloner le projet sur `https://github.com/yanniscode/Node-Extract_SQL-Insert` et installer les modules (librairies) nécessaires au moyen de NPM:
 
-        	git clone https://github.com/yanniscode/Node-Extract_SQL-Insert.git
-        	npm install --save
+		git clone https://github.com/yanniscode/Node-Extract_SQL-Insert.git
+		npm install --save
 
-Lancement de l'application:
+
+Installation à partir de 0 (problèmes):
+
+	1/ installer le projet à la racine (home)
+	2/ le fichier '.my.cnf' est à créer hors du projet, à la racine (home)
+	> Contenu (avec vos informations de connexion) : 
+
+		[client]
+
+		user = ''
+
+		password = ''
+
+	3/ config de BDD (nom, login, passes) dans './db_config/database_connection.js' et './db_config/pool_database_connection.js' (voir les fichiers '.sample.js' pour cela)
+	4/ dossiers './tableaux/csv' et './tableaux/xlsx' et './bdd_mysql/backup' à créer manuellement, au besoin
+	5/ créer la Base de données MySQL manuellement, au départ (au moins une base vide)
+
+
+
+- Lancement de l'application:
         
 	cd quickstart-X-X  // à partir de la racine du projet (X.X correspondant au numéro de version de Quickstart - ex: 'quickstart-3.2' dans notre cas...)
 	node node 0-quickstart-options.js
         
-Vous pouvez désormais choisir ces options de démarrage:
+- Vous pouvez désormais choisir ces options de démarrage:
 
-Liste des options:
+	- Liste des options:
 
 	0: Lancement du programme 'Quickstart 3.2'
 	1: Lancement du planificateur de tâches 'Cron Launcher 1.4'
@@ -38,13 +57,14 @@ Liste des options:
 	6: Quitter
 
 
-Dans un premier temps le programme va se connecter à l'aide du fichier `client_secret.json`, que vous téléchargerez sur `https://console.cloud.google.com/apis/`(console de l'API Gmail). Renommez-le au besoin, et déplacez ce fichier dans répertoire `./client_secret`.
+- Dans un premier temps le programme va se connecter à l'aide du fichier `client_secret.json`, que vous téléchargerez sur `https://console.cloud.google.com/apis/`(console de l'API Gmail). Renommez-le au besoin, et déplacez ce fichier dans répertoire `./client_secret`.
 
-Quickstart va par la suite chercher un mail contenant `whitform.xlsx` comme chaîne de caractères. Une fois le mail trouvé, il va récupérer l'ID qui correspond à la pièce jointe afin de prendre les données en 'base64'.
+- Quickstart va par la suite chercher un mail contenant `whitform.xlsx` comme chaîne de caractères. Une fois le mail trouvé, il va récupérer l'ID qui correspond à la pièce jointe afin de prendre les données en 'base64'.
 
-Les modules de parsage nous servirons à découper le fichier '.xlsx' vers du '.csv', puis à l'insertion des contenus ciblés en base de données MySQL.
+- Les modules de parsage nous servirons à découper le fichier '.xlsx' vers du '.csv', puis à l'insertion des contenus ciblés en base de données MySQL.
 
-Modules utilisées:
+
+- Modules principaux utilisées:
 
 
 	Extraction:
@@ -64,7 +84,7 @@ Modules utilisées:
 		
 
 
- Note:
+- Note:
 
 Un gestionnaire de tâches planifiées permettant d'automatiser le lancement du programme a été intégré.Voir à ce sujet: `./quickstart-3.2/README-cron_launcher-1.4.md`.
 

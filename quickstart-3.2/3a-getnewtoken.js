@@ -43,10 +43,6 @@
 */
 
 /**
- * @param {function} listmails  Le 'callback' à appeler avec le client autorisé: si le jeton d'authentification 'gmail-nodejs-quickstart.json' a été lu correctement, on autorise la lecture des mails (fonction 'listMails')    // *** utilisé ici
-*/
-
-/**
  * @param {Object} token Le jeton (fichier 'gmail-nodejs-quickstart.json') à stocker sur le disque.      // *** utilisé ici
 */
 
@@ -66,17 +62,17 @@ const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
 module.exports = {
 
 
-    getnewtoken: function getNewToken(oauth2Client, listmails) {
+    getnewtoken: function getNewToken(oauth2Client) {
 
 
         if (typeof oauth2Client !== 'object' || !(oauth2Client instanceof Object) || oauth2Client instanceof Array) { // *** Check du paramètre: type Object (!= valeur primitive 'null' ou type 'tableau')
             
             throw oauth2Client +'\n3a - Erreur: Le paramètre oauth2Client n\'est pas un objet...';   // *** Levée d'une exception sur le type
         }
-        else if (typeof listmails === "function") {
+        // else if (typeof listmails === "function") {
 
-            throw listmails +'\n3a - Erreur: Le paramètre listmails n\'est pas une fonction...';
-        }
+        //     throw listmails +'\n3a - Erreur: Le paramètre listmails n\'est pas une fonction...';
+        // }
         
         else {
  
@@ -124,8 +120,7 @@ module.exports = {
                                     oauth2Client.credentials = token;
                                     console.log('3a - '+ token);
 
-                                    storetokenfile.storetoken(token);
-                                    listmails.listmails(oauth2Client); // *** après l'enregistrement d'un nouveau jeton, on accède directement à la sélection des mails
+                                    storetokenfile.storetoken(token, oauth2Client);
 
                                 }
                                 catch (e) {

@@ -83,44 +83,29 @@ const getlastcrondatefunction = (() => {
 
                 let today = d.getDate() + "_" + (d.getMonth() + 1) + "_" + d.getFullYear(); // *** conversion de 'Date' (ISO 8601) -> date simple sous forme de string (ex: '30_09_2020')
 
+                    
+                const writeStream = fs.createWriteStream('../bdd_mysql/backup/'+ today +'.dump.sql');
+
+                const dump = spawn('mysqldump', [   // *** Note: les informations de connexion sont à créer sur un fichier à créer '~/.my.cnf'
+                    // '-u',
+                    // '',  // *** user
+                    // '-pPasse',    // *** mot de passe
+                    'dataviz_fish_uk',
+                ]);
+
 
                 try {
-                    
-                    const writeStream = fs.createWriteStream('../bdd_mysql/backup/'+ today +'.dump.sql');
 
-
-                    try {
-
-                        const dump = spawn('mysqldump', [   // *** Note: les informations de connexion sont à créer sur un fichier à créer '~/.my.cnf'
-                            // '-u',
-                            // '',  // *** user
-                            // '-pPasse',    // *** mot de passe
-                            'dataviz_fish_uk',
-                        ]);
-
-
-                        try {
-
-                            dump
-                                .stdout
-                                .pipe(writeStream)
-                                .on('finish', function () {
-                                    console.log('Backup de la BDD \'dataviz_fish_uk\' effectué.')
-                                })
-                                .on('error', function (err) {
-                                    console.log(err)
-                                });
-                        
-                        } catch (e) {
-                            console.error(e);
-                        }
-
-
-                    } catch (e) {
-                        console.error(e);
-                    }
-
-
+                    dump
+                        .stdout
+                        .pipe(writeStream)
+                        .on('finish', function () {
+                            console.log('Backup de la BDD \'dataviz_fish_uk\' effectué.')
+                        })
+                        .on('error', function (err) {
+                            console.log(err)
+                        });
+                
                 } catch (e) {
                     console.error(e);
                 }

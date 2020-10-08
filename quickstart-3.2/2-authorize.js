@@ -50,9 +50,6 @@
  * @param {Object} token Le jeton (fichier 'gmail-nodejs-quickstart.json') à stocker sur le disque.      // *** utilisé ici
 */
 
-/**
- * @param {function} listmails  Le 'callback' à appeler avec le client autorisé: si le jeton d'authentification 'gmail-nodejs-quickstart.json' a été lu correctement, on autorise la lecture des mails (fonction 'listMails')    // *** utilisé ici
-*/
 
 
 
@@ -97,7 +94,7 @@ module.exports = {
             let auth = new googleAuth();
             let oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
 
-
+            
 
             /*------------------------------------------------------------------------
                             Vérifiez si nous avons déjà stocké un jeton.
@@ -112,7 +109,7 @@ module.exports = {
 
                     try {
 
-                        getnewtokenfile.getnewtoken(oauth2Client, listmails);
+                        getnewtokenfile.getnewtoken(oauth2Client);
 
                     } catch (e) {
                         console.error(e);

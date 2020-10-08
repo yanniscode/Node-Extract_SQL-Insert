@@ -39,7 +39,12 @@
  * @param {Object} token Le jeton (fichier 'gmail-nodejs-quickstart.json') à stocker sur le disque.      // *** utilisé ici
 */
 
+/**
+ * @param {google.auth.OAuth2} oauth2Client Le client (fichier 'client_secret.json') OAuth2, pour obtenir un jeton (fichier 'gmail-nodejs-quickstart.json').     // *** utilisé ici
+*/
 
+// *** Modules de Quickstart-3.2 :
+const listmailsfile = require('./4-listmails');
 
 // *** Modules complémentaires NodeJs :
 const fs = require('fs');
@@ -54,7 +59,7 @@ let TOKEN_PATH = TOKEN_DIR + 'gmail-nodejs-quickstart.json';
 module.exports = {
 
 
-    storetoken: function storeToken(token) {
+    storetoken: function storeToken(token, oauth2Client) {
 
 
         if (typeof token !== 'object' || !(token instanceof Object) || token instanceof Array) { // *** check du paramètre: type Object (!= valeur primitive 'null' ou type 'tableau')
@@ -90,6 +95,14 @@ module.exports = {
                         console.log('3b - Contenu de celui-ci:\n'); 
                         console.log(fs.readFileSync(TOKEN_PATH, "utf8"));
 
+                        try {
+
+                            listmailsfile.listmails(oauth2Client); // *** après l'enregistrement d'un nouveau jeton, on accède directement à la sélection des mails
+
+                        }
+                        catch (e) {
+                            console.error(e);
+                        }
                     }
                 
                 }); 

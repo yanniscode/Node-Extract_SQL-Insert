@@ -1,6 +1,43 @@
 API GMAIL (résolution des problèmes d'installation)
 
-	Liste des erreurs lors du git clone
+	Liste des erreurs possibles lors du premier git clone
+
+
+
+******************************************
+
+
+(08/10/2020)
+
+Installation à partir de 0 (problèmes):
+
+	1/ installer le projet à la racine (home) 
+
+	2/ fichier '.my.cnf' à créer hors du projet, à la racine (home) - contenu (avec vos informations de connexion) :
+
+		[client]
+		user = ''
+		password = ''
+
+	3/ config de BDD (nom, login, passes)
+
+	4/ dossiers 'csv' et '.xlsx' et 'backup' à créer manuellement (revoir 'gitignore')
+
+	5/ créer la BDD manuellement, au départ (au moins son nom)
+
+
+
+
+
+*****************************************
+
+WINDOWS 8: (bugs) (08/10/2020)
+
+-pb avec requêtes SQL (results = [])	-> résolu
+
+- pb avec 'pool' MySQL	-> irrésolu
+
+- pb avec 'mysqldump' (backup, restauration)	-> irrésolu
 
 
     A> ERREURS D'INSTALLATION:
@@ -98,7 +135,7 @@ Error: ENOENT: no such file or directory, open '/home/yanniscode_bzh/Documents/c
 
 
 
-*****************
+**************************************
 
 NOUVELLES ERREURS :
 
@@ -123,6 +160,37 @@ rester à celle-ci :
 ***
 
 > nouvelle erreur (09/2020): results = null (problème de connexion à l'API ?? (refaire un projet ??) -> ok (24/09/2020): recréer le fichier '/home/yanniscode/.credentials-api/gmail-nodejs-quickstart.json' (Linux) semble marcher (pb de credentials obsolète)
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+This file is part of Quickstart.js.
+
+
+Quickstart.js is free software: 
+
+You can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Quickstart.js is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+
+You should have received a copy of the GNU General Public License
+along with Quickstart.js.  If not, see <https://www.gnu.org/licenses/>.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 

@@ -89,9 +89,12 @@ module.exports = {
 
                 poolfile.query(query, function(rows, err, fields) {
 
+                    console.log(oauth2Client);
+                    console.log('err : '+ err);
+                    console.log('rows'+ rows);
                     
                     if (err) {
-                        throw err +'\nErreur de connexion à Mysql. Check du mail impossible...';
+                        throw '\nErreur de connexion à Mysql. Check du mail impossible...';
                     }
                     else if (rows.length > 0) {
 

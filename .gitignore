@@ -6,10 +6,14 @@ infos_persos.txt
 /quickstart-3.2/db_config/database_connection.js
 /quickstart-3.2/db_config/pool_database_connection.js
 
+#repertoires essentiels:
+/tableaux/csv/*
+/tableaux/xlsx/*
+
 #répertoires divers:
 /client_secret/client_secret-test
-/bdd_mysql/backup/
-/test_files
+/bdd_mysql/backup/*
+/test_files/*
 
 # compiled output
 /dist
@@ -17,13 +21,9 @@ infos_persos.txt
 /tmp
 /out-tsc
 
-#repertoires (contenu de dépendances):
-/tableaux/csv
-/tableaux/xlsx
 
 # dependencies
 /node_modules
-
 
 
 # IDEs and editors

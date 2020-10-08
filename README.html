@@ -14,7 +14,7 @@
     <body>
 
         <charset utf-8>
-        <h1>Quickstart-3.2 (NodeJs / API Gmail)</h1>
+        <h1>Quickstart-3.2 (NodeJs / API Gmail) - Version pour Linux (pour Windows en test)</h1>
 
         <hr>
         <strong>Extraction d'une pièce jointe de mail, au moyen de l'API Gmail, afin de récupérer un fichier ('.xlsx') qui sera parsé au format '.csv', et insérer des données ciblées en BDD MySQL.</strong>
@@ -24,7 +24,7 @@
         
         <br /><br /><br />
         
-        <i><b>Note du 5 Octobre 2020:</b><br />Vous pouvez désormais utiliser le programme <b>Quickstart-3.2</b>. Celui-ci permet de récupérer automatiquement des pièces-jointes extraites de mails différents.</i>
+        <i><b>7 Octobre 2020:</b><br />Vous pouvez désormais utiliser le programme <b>Quickstart-3.2</b>. Celui-ci permet de récupérer automatiquement des pièces-jointes extraites de mails différents.</i>
 
         <br /><br />
 
@@ -38,6 +38,26 @@
         <pre>npm install --save</pre>
 
         <br />
+
+        Installation à partir de 0 (problèmes):
+
+	    <ul>
+
+            <li>1/ installer le projet à la racine (home)</li>
+            <li>
+                2/ le fichier <i><b>'.my.cnf'</b></i> est à créer hors du projet, à la racine (home)<br />
+                > Contenu (avec vos informations de connexion) :
+                <br />
+                    <pre>[client]</pre>
+                    <pre>user = ''</pre>
+                    <pre>password = ''</pre>
+                <br />
+            </li>
+            <li>3/ config de BDD (nom, login, passes) dans <i><b>'./db_config/database_connection.js'</b></i> et <i><b>'./db_config/pool_database_connection.js'</b> (voir les fichiers <i><b>'.sample.js'</b></i> pour cela)</i></li>
+            <li>4/ dossiers <i><b>'./tableaux/csv'</b></i> et <i><b>'./tableaux/xlsx'</b></i> et <i><b>'./bdd_mysql/backup'</b></i> à créer manuellement, au besoin</li>
+            <li>5/ créer la Base de données MySQL manuellement, au départ (au moins une base vide)</li>
+
+        </ul>
 
         <b><ul><li>Lancement de l'application:</b>
         </li></ul>

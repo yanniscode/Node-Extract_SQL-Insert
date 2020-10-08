@@ -55,7 +55,9 @@ try {
 
         // this would be way easier on a shell/bash script :P
         let child_process = require('child_process');
+
         let parts = cmd.split(/\s+/g);
+
         let p = child_process.spawn(parts[0], parts.slice(1), { stdio: 'inherit' });
 
 
@@ -72,7 +74,7 @@ try {
                     err.code = code;
                     err.cmd = cmd;
 
-                    console.log('err.message: '+ err.message);
+                    throw 'err.message: '+ err.message;
                 }
 
                 if (cb) {
