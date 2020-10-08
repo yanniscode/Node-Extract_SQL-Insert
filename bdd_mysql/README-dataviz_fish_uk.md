@@ -9,8 +9,6 @@ Répertoire du fichier 'sql' d'archive de la Base de Données MySQL 'dataviz_fis
 Pour l'utiliser, copiez-collez le contenu du fichier `datafishuk-X.X.sql` (selon le numéro de version) dans votre console MYSQL ou dans 'PhpMyAdmin' (rubrique '.sql').
 
 
-Le dossier `backup` contient les dernières versions sauvegardées par la tâche  `cron_launcher.js` (avec les dernières données sauvegardées, dans des fichiers nommés: `XX_X_XXXX.dump.sql`, à la date correspondante).
-
 -----------------------------------------------------------------------------------------------------------------------------
 
 
