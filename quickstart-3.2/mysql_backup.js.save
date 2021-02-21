@@ -83,14 +83,14 @@ const getlastcrondatefunction = (() => {
 
                 let today = d.getDate() + "_" + (d.getMonth() + 1) + "_" + d.getFullYear(); // *** conversion de 'Date' (ISO 8601) -> date simple sous forme de string (ex: '30_09_2020')
 
-                    
+
                 const writeStream = fs.createWriteStream('../bdd_mysql/backup/dataviz_fish_uk-'+ today +'.dump.sql');
 
                 const dump = spawn('mysqldump', [   // *** Note: les informations de connexion sont à créer sur un fichier à créer '~/.my.cnf'
-                    // '-u',
-                    // '',  // *** user
-                    // '-ptest',    // *** mot de passe
-                    'dataviz_fish_uk',
+                    '-u',
+                    '',  // *** user
+                    '',    // *** mot de passe
+                    'd',
                 ]);
 
 

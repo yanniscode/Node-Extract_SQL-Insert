@@ -92,7 +92,7 @@ const importDumpFile = ((err) => {
 
                     try {
 
-                        exec('mysql dataviz_fish_uk < ~/node-extract_sql-insert-p-clean/bdd_mysql/backup/'+ today +'.dump.sql', (error, stdout, stderr) => {    // *** Note: ici, utilisation (plus sécurisée) du fichier '.my.cnf' de '/Home' (= données utilisateur et mot de passe)
+                        exec('mysql dataviz_fish_uk < ../bdd_mysql/backup/'+ today +'.dump.sql', (error, stdout, stderr) => {    // *** Note: ici, utilisation (plus sécurisée) du fichier '.my.cnf' de '/Home' (= données utilisateur et mot de passe)
 
                             if (error) {
                                 console.error(`error: ${error.message}`);

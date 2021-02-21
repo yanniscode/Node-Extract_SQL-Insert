@@ -1,4 +1,4 @@
-/**         Quickstart-3.2 :
+/**         Quickstart-3.3 :
  * 
  *      By means of the Gmail API, this Programme permits to insert into MySQL tables
  *      selected datas parsed from ‘xlsx’ files, and converted into ‘csv’ files.
@@ -23,15 +23,15 @@
 
 /*------------------------------------------------------------------------//
 //                                                                        //
-//                          MODULE QUICKSTART 3.2                         //
+//                          MODULE QUICKSTART 3.3                         //
 //                                                                        //
 //                         0 - Quickstart options                         //
 //------------------------------------------------------------------------*/
 
 
 
-// 0: Lancement du programme \'Quickstart 3.2\'
-// 1: Lancement du planificateur de tâches \'cron_launcher-1.4\'
+// 0: Lancement du programme \'Quickstart 3.3\'
+// 1: Lancement du planificateur de tâches \'cron_launcher-2.0\'
 // 2: Sauvegarde (back-up) de la Base de Données \'dataviz_fish_uk\' (MySQL)
 // 3: Restauration de la BDD \'dataviz_fish_uk\' (et des données de la dernière sauvegarde)
 // 4: Ré-initialisation de la BDD \'dataviz_fish_uk\' (vide) et suppression des fichier \'.xlsx\' et \'.csv\''
@@ -64,7 +64,7 @@ let quickstartCommandList = [
 ];
 
 let cronCommandList = [
-    "node ./cron_launcher.js"
+    "node ./cron_launcher-b.js"
 ];
 
 let backupCommandList = [
@@ -84,13 +84,17 @@ let suppressionCommandList = [
     "node ./annexes/suppress_files.js"
 ];
 
+let quitterCommandList = [
+    "pm2 stop cron_launcher.js"
+]
+
 
 console.log(`\n ------------------------------------------------------------------------------------------------------\n`);                     
-console.log(`                                 ~~~~~~    QUICKSTART.JS 3-2    ~~~~~~                                   `);   
+console.log(`                                 ~~~~~~    QUICKSTART.JS 3-3    ~~~~~~                                   `);   
 
 console.log('\n ------------------------------------------------------------------------------------------------------\n');
 
-console.log(' *** QUICKSTART.JS - Version 3.2 - Copyright (C) 2018-2020                                          ***\n');
+console.log(' *** QUICKSTART.JS - Version 3.3 - Copyright (C) 2018-2020                                          ***\n');
 console.log(' *** (Seb, yanniscode, DarKaweit, stevlg, Nad, Code.bzh)                                                  ***\n');
 console.log(' *** https://github.com/yanniscode, https://github.com/darkaweit, https://github.com/StevLG         ***\n');
 console.log(' *** This program comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome     ***\n');
@@ -101,8 +105,8 @@ console.log(`\n ----------------------------------------------------------------
 console.log('\n  *****************************************************************************************************');
 console.log('   ***                                           Liste des options                                 ***');
 console.log('  *****************************************************************************************************\n');
-console.log('  |          0: Lancement du programme \'Quickstart 3.2\'                                              |');
-console.log('             1: Lancement du planificateur de tâches \'Cron Launcher 1.4\'                              ');
+console.log('  |          0: Lancement du programme \'Quickstart 3.3\'                                              |');
+console.log('             1: Lancement du planificateur de tâches \'Cron Launcher 2.0\'                              ');
 console.log('  |          2: Sauvegarde (back-up) de la Base de Données \'dataviz_fish_uk\' (MySQL)                 |');
 console.log('             3: Restauration de la BDD \'dataviz_fish_uk\' (et des données de la dernière sauvegarde)   ');
 console.log('  |          4: Ré-initialisation de la BDD \'dataviz_fish_uk\' (vide) et suppression                  |');
@@ -149,7 +153,7 @@ try {
                 case '0':
 
                     console.time("0 - Temps de réponse");
-                    choice = 'Lancement du programme \'Quickstart 3.2\' (via script)';
+                    choice = 'Lancement du programme \'Quickstart 3.3\' (via script)';
                     console.log(choice);
 
                     setTimeout(() => {
@@ -159,12 +163,12 @@ try {
                             shell.series(quickstartCommandList , function(err, result) {  // *** Note: résultat de la commandes groupée (après avoir lancé plusieurs scripts en même temps)
 
                                 if (err) {
-                                    console.error('0 - Erreur de transaction.\n' + err);       
-                                } 
-                                
+                                    console.error('0 - Erreur de transaction.\n' + err);
+                                }
+
                                 else {
 
-                                    console.log('\n0 - Transaction effectuée via \'Quickstart 3.2\'.\n(Sakana Consultants, Yanniscode, DarKaweit and co)\n');
+                                    console.log('\n0 - Transaction effectuée via \'Quickstart 3.3\'.\n(Sakana Consultants, Yanniscode, DarKaweit and co)\n');
                                     console.timeEnd("0 - Temps de réponse");
 
                                 };
@@ -182,7 +186,7 @@ try {
 
                 case '1':
 
-                    choice = '1: Lancement programme \'Quickstart 3.2\' (via planificateur de tâches \'cron_launcher-1.4\')';
+                    choice = '1: Lancement programme \'Quickstart 3.3\' (via planificateur de tâches \'cron_launcher-2.0\')';
                     console.log(choice);
 
                     setTimeout(() => {
@@ -472,10 +476,30 @@ try {
 
                 case '6':
 
-                    choice = '\n0 - A la prochaine...\n(Sakana Consultants, Yanniscode, DarKaweit and co)\n';
-                    console.log(choice);
+                    setTimeout(() => {
 
-                break;
+                        try {
+
+                            shell.series(quitterCommandList , function(err, result) {
+            
+                                if (err) {
+                                    console.error('0 - Erreur de fermeture de l\'application.\n'+ err);       
+                                } 
+                                
+                                else {
+                                    choice = '\n0 - A la prochaine...\n(Sakana Consultants, Yanniscode, DarKaweit and co)\n';
+                                    console.log(choice);                             
+                                };
+                
+                            });
+
+                        } catch(e) {
+                            console.error(e);
+                        }
+            
+                    }, 1000);
+
+                    break;
 
 
             } // *** fin de 'switch case'

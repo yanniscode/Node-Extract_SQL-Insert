@@ -72,12 +72,17 @@ let rl = readline.createInterface({
     output: process.stdout
 });
 
+let d = new Date();
+let today = '\n*** Date (sur le serveur): On est le '+ d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear() + ".\nIl est actuellement: " + d.getHours() + " heure " + d.getMinutes() + " minutes et "+ d.getSeconds() +' secondes... ***';
+
 
 // *** Méthode d'exécution du la tâche 'Cron' - définition du moment de lancement par l'utilisateur:
 const definecrontime = (() => {
 
 
     try {
+
+        console.log('\nHello ! \n'+ today +'\n');
 
         rl.question('\n*** Cron Launcher: Entrez votre moment de lancement du planificateur de tâches ici ***\n\n*** format: "seconde / minute / heure / numéro du mois / jour du mois / jour de la semaine (de 1 à 7)"\n [séparés par des espaces - valeur * = par défaut] ***\n\n*** Ex: 0 0 15 * * 2-5 = déclencher le script du Mardi au Vendredi, à 15h 00min 00s ***\n\n*** C\'est à vous: ', function (momentvalue) {
 
@@ -96,10 +101,17 @@ const definecrontime = (() => {
                 }
 
                 // *** Appel de la méthode d'exécution du planificateur de tâches 'cron_launcher' :
-                executecronlauncher(momentvalue);
 
-            }
-            
+		try {
+                    executecronlauncher(momentvalue);
+		}
+		catch(e){
+		    console.error(e);
+		    connectionfile.connection.end();
+		}
+
+	    }
+
         });
 
     } catch(e) {
@@ -121,8 +133,6 @@ const executecronlauncher = ((momentvalue) => {
 
     try {
 
-        console.time("Cron_launcher: Temps de réponse");
-
         cron.schedule(momentvalue, function(err) {
 
 
@@ -131,81 +141,78 @@ const executecronlauncher = ((momentvalue) => {
                 "node ./1-authentification.js"
             ];
 
-                    
+
             const sql = ('INSERT INTO cron_infos (id_cron) VALUE (NULL)');
 
 
-            try {
+	    try {
 
-                connectionfile.connection.connect();
-        
-            } catch (e) {
-                console.error(e);
-            }
+		shellfile.series(commandList, function(err, result) { // *** resultat de la commande groupee (apres avoir lance plusieurs scripts en meme temps)
+
+		    console.time('Cron_launcher: Temps de reponse');
 
 
-            try {
+		    if(err) {
+			throw err;
+		    }
 
-                connectionfile.connection.query(sql, function (err, result) { // *** début de connexion à la Base de Données MySQL
+		    else {
 
-                    if (err) { 
+		    	try {
 
-                        try {
+                	     connectionfile.connection.connect();
 
-                            connectionfile.connection.rollback(function() {
-                                throw err;
-                            });
+			} catch(e){
+			    console.error(e);
+			}
 
-                        } catch (e) {
-                            console.error(e);
-                        }
+		    }
 
-                    };
+	            try {
 
+        	        connectionfile.connection.query(sql, function (err, result) { // *** début de connexion à la Base de Données MySQL
 
+                	    if (err) {
 
-                    try {
+                        	try {
 
-                        shellfile.series(commandList, function(err, result) {  // *** résultat de la commandes groupée (après avoir lancé plusieurs scripts en même temps)
+                            	    connectionfile.connection.rollback(function() {
+                                    	throw err;
+                            	    });
 
+                            	} catch (e) {
+                            	    console.error(e);
+			    	}
 
-                            if (err) {
-                                throw err;
-                            } 
-                            
-                            else {
+                    	    }
+
+			    else {
+
+				console.log('sql + result: \n'+ sql + result);
+
 
                                 setTimeout(() => {
 
                                     console.log('\nTransaction effectuée via \'cron_launcher-1.4.js\'.\n(Sakana Consultants, Yanniscode, DarKaweit and co)\n');
-                                    console.timeEnd("Cron_launcher: Temps de réponse");
+
+				    console.timeEnd('Cron_launcher: Temps de reponse');
 
                                 }, 1000);
 
                             };
-                            
-                        });     // *** fin de shellfile.series()
+
+                        });     // *** fin de connectionfile.connection.query()
 
                     } catch (e) {
                         console.error(e);
                     }
-            
-                });     // *** fin de 'connectionfile.connection.query'
-                
+
+                });     // *** fin de shellfile.series()
+
 
             } catch (e) {
                 console.error(e);
             }
-
-
-            try {
-
-                connectionfile.connection.end();
-        
-            } catch (e) {
-                console.error(e);
-            }
-
 
         });     // *** fin de 'cron.schedule'
 

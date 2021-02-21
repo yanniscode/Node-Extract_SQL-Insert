@@ -47,7 +47,8 @@ const path = require('path');
 
 // *** Variables (globales):
 // *** Note: répertoire (modifiable au besoin) des tableaux '.xlsx' et '.csv' (ex : '~' sur 'Lubuntu'):
-let TABLES_DIR = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) + '/Node-Extract_SQL-Insert/tableaux';
+let TABLES_DIR = '../tableaux';
+// let TABLES_DIR = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) + '/Node-Extract_SQL-Insert/tableaux';
 
 
 try {
